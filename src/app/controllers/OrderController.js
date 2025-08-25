@@ -30,14 +30,16 @@ class OrderController {
 
     const { user } = request.body;
 
-    async function generateId(number) {
+    async function generateId(length) {
       const { nanoid } = await import("nanoid");
-      return nanoid(number);
+      return nanoid(length);
     }
+
+    const orderId = await generateId(12);
 
     try {
       const order = await Order.create({
-        id: generateId(12),
+        id: orderId,
         user_id: user,
         status: "Pedido realizado",
       });
