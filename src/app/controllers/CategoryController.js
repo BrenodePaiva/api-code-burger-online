@@ -38,8 +38,12 @@ class CategoryController {
 
   // list category
   async index(request, response) {
-    const categories = await Category.findAll();
-    return response.json(categories);
+    try {
+      const categories = await Category.findAll();
+      return response.status(200).json(categories);
+    } catch (err) {
+      return response.status(500).json({ Erro: err });
+    }
   }
 
   // ___________________________________________________________________________

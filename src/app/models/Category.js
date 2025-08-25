@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-import Sequelize, { Model } from "sequelize";
+import Sequelize, { DataTypes, Model } from "sequelize";
 
 class Category extends Model {
   static init(sequelize) {
@@ -14,9 +14,18 @@ class Category extends Model {
             return `${process.env.API_URL}/category-file/${this.path}`;
           },
         },
+        createdAt: {
+          type: DataTypes.DATE,
+          field: "created_at",
+        },
+        updatedAt: {
+          type: DataTypes.DATE,
+          field: "updated_at",
+        },
       },
       {
         sequelize,
+        tableName: "categories",
       }
     );
     return this;
