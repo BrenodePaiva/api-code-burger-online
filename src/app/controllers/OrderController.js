@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import * as Yup from "yup";
 
 import Order from "../models/Order.js";
@@ -31,9 +30,14 @@ class OrderController {
 
     const { user } = request.body;
 
+    async function generateId(number) {
+      const { nanoid } = await import("nanoid");
+      return nanoid(number);
+    }
+
     try {
       const order = await Order.create({
-        id: nanoid(12),
+        id: generateId(12),
         user_id: user,
         status: "Pedido realizado",
       });
