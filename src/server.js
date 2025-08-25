@@ -1,4 +1,3 @@
-// const app = require("./app")
 import "dotenv/config";
 
 import http from "http";
