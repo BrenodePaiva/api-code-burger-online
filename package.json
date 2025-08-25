@@ -1,5 +1,5 @@
 {
-  "name": "send-email",
+  "name": "api-code-burger-online",
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
@@ -9,6 +9,13 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  },
   "devDependencies": {
     "@eslint/js": "^9.34.0",
     "@eslint/json": "^0.13.1",
@@ -18,12 +25,5 @@
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "sucrase": "^3.35.0"
-  },
-  "dependencies": {
-    "axios": "^1.11.0",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0",
-    "socket.io": "^4.8.1"
   }
 }
