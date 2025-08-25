@@ -4,6 +4,7 @@ import { Router } from "express";
 import multer from "multer";
 
 import CategoryController from "./app/controllers/CategoryController.js";
+import OrderController from "./app/controllers/OrderController.js";
 import ProductController from "./app/controllers/ProductController.js";
 import authMiddleware from "./app/middlewares/auth.js";
 import isAdmin from "./app/middlewares/isAdmin.js";
@@ -27,8 +28,12 @@ routes.get("/", (req, res) => {
     });
 });
 
+// routes.use(authMiddleware)
+
 routes.get("/products", ProductController.index);
 
 routes.get("/categories", CategoryController.index);
+
+routes.get("/orders/:user", OrderController.index);
 
 export default routes;

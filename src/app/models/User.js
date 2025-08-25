@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import Sequelize, { Model } from "sequelize";
+import Sequelize, { DataTypes, Model } from "sequelize";
 
 class User extends Model {
   static init(sequelize) {
@@ -13,9 +13,18 @@ class User extends Model {
         pass_reset_token_expires: Sequelize.DATE,
         admin: Sequelize.BOOLEAN,
         google_id: Sequelize.STRING,
+        createdAt: {
+          type: DataTypes.DATE,
+          field: "created_at",
+        },
+        updatedAt: {
+          type: DataTypes.DATE,
+          field: "updated_at",
+        },
       },
       {
         sequelize,
+        tableName: "users",
       }
     );
 

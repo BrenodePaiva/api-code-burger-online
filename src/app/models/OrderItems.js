@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize'
+import Sequelize, { DataTypes, Model } from "sequelize";
 
 class OrderItems extends Model {
   static init(sequelize) {
@@ -6,23 +6,34 @@ class OrderItems extends Model {
       {
         unit_price: Sequelize.DECIMAL,
         quantity: Sequelize.INTEGER,
+        createdAt: {
+          type: DataTypes.DATE,
+          field: "created_at",
+        },
+        updatedAt: {
+          type: DataTypes.DATE,
+          field: "updated_at",
+        },
       },
-      { sequelize }
-    )
-    return this
+      {
+        sequelize,
+        tableName: "order_items",
+      }
+    );
+    return this;
   }
 
   static associate(model) {
     this.belongsTo(model.Order, {
-      foreignKey: 'order_id',
-      as: 'order',
-    })
+      foreignKey: "order_id",
+      as: "order",
+    });
 
     this.belongsTo(model.Product, {
-      foreignKey: 'product_id',
-      as: 'product',
-    })
+      foreignKey: "product_id",
+      as: "product",
+    });
   }
 }
 
-export default OrderItems
+export default OrderItems;
