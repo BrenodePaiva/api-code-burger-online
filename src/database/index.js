@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "pg";
 
 import Sequelize from "sequelize";
 
