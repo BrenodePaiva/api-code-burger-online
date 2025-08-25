@@ -4,6 +4,7 @@ import { Router } from "express";
 import multer from "multer";
 
 import CategoryController from "./app/controllers/CategoryController.js";
+import ProductController from "./app/controllers/ProductController.js";
 import authMiddleware from "./app/middlewares/auth.js";
 import isAdmin from "./app/middlewares/isAdmin.js";
 import multerConfig from "./config/multer.js";
@@ -25,6 +26,8 @@ routes.get("/", (req, res) => {
       return res.send(`❌ Error connecting to database: ${error}`);
     });
 });
+
+routes.get("/products", ProductController.index);
 
 routes.get("/categories", CategoryController.index);
 

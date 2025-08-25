@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-import Sequelize, { Model } from "sequelize";
+import Sequelize, { DataTypes, Model } from "sequelize";
 
 class Product extends Model {
   static init(sequelize) {
@@ -16,9 +16,18 @@ class Product extends Model {
             return `${process.env.API_URL}/product-file/${this.path}`;
           },
         },
+        createdAt: {
+          type: DataTypes.DATE,
+          field: "created_at",
+        },
+        updatedAt: {
+          type: DataTypes.DATE,
+          field: "updated_at",
+        },
       },
       {
         sequelize,
+        tableName: "products",
       }
     );
     return this;

@@ -29,9 +29,13 @@ class CategoryController {
 
     // create category
     const { filename: path } = request.file;
-    const category = await Category.create({ name, path });
+    try {
+      const category = await Category.create({ name, path });
 
-    return response.json({ id: category.id, name, path });
+      return response.status(201).json({ id: category.id, name, path });
+    } catch (err) {
+      return response.status(500).json({ Error: err });
+    }
   }
 
   // ___________________________________________________________________________
@@ -42,7 +46,7 @@ class CategoryController {
       const categories = await Category.findAll();
       return response.status(200).json(categories);
     } catch (err) {
-      return response.status(500).json({ Erro: err });
+      return response.status(500).json({ Error: err });
     }
   }
 
@@ -74,15 +78,19 @@ class CategoryController {
     }
     const { name } = request.body;
 
-    await Category.update(
-      {
-        name,
-        path,
-      },
-      { where: { id } }
-    );
-    category = await Category.findByPk(id);
-    return response.json(category);
+    try {
+      await Category.update(
+        {
+          name,
+          path,
+        },
+        { where: { id } }
+      );
+      category = await Category.findByPk(id);
+      return response.status(200).json(category);
+    } catch (err) {
+      return response.status(500).json({ Error: err });
+    }
   }
 }
 
