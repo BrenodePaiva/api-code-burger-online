@@ -9,7 +9,13 @@ import orderSocket from "./sockets/orderSocket.js";
 const port = process.env.PORT;
 
 const server = http.createServer(app);
-const io = new Server(server, { cors: {} });
+const io = new Server(server, {
+  cors: {
+    origin: process.env.API_CONSUMER,
+    methods: ["GET", "POST", "PUT"],
+    credentials: true,
+  },
+});
 
 app.set("io", io);
 io.on("connection", (socket) => orderSocket(socket, io));
