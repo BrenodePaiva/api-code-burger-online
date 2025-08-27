@@ -1,4 +1,3 @@
-// const {Router} = require("express")
 import "dotenv/config";
 
 import { Router } from "express";
@@ -21,10 +20,11 @@ routes.get("/", (req, res) => {
   DataBase.connection
     .authenticate()
     .then(() => {
-      return res.send(
-        `🚀 Server started on port: ${process.env.PORT} <br/> <br/> 
-        ✅ Connection to the database stablished successfully.`
-      );
+      // return res.send(
+      //   `🚀 Server started on port: ${process.env.PORT} <br/> <br/>
+      //   ✅ Connection to the database stablished successfully.`
+      // );
+      return res.redirect(process.env.API_CONSUMER);
     })
     .catch((error) => {
       return res.send(`❌ Error connecting to database: ${error}`);
