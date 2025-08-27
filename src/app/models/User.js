@@ -1,4 +1,5 @@
 import bcrypt from "bcryptjs";
+import crypto from "crypto";
 import Sequelize, { DataTypes, Model } from "sequelize";
 
 class User extends Model {
