@@ -20,11 +20,44 @@ routes.get("/", (req, res) => {
   DataBase.connection
     .authenticate()
     .then(() => {
-      // return res.send(
-      //   `🚀 Server started on port: ${process.env.PORT} <br/> <br/>
-      //   ✅ Connection to the database stablished successfully.`
-      // );
-      return res.redirect(process.env.API_CONSUMER);
+      const redirectUrl = process.env.API_CONSUMER;
+      const port = process.env.PORT;
+      return res.send(`
+         <html>
+          <head>
+            <meta charset="UTF-8" />
+            <title>Redirecionando...</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+              }
+              .countdown {
+                font-size: 2em;
+                color: #007bff;
+              }
+            </style>
+            <script>
+              let segundos = 5;
+              function atualizarContagem() {
+                document.getElementById("contador").textContent = segundos;
+                if (segundos === 0) {
+                  window.location.href = "${redirectUrl}";
+                }
+                segundos--;
+              }
+              setInterval(atualizarContagem, 1000);
+              window.onload = atualizarContagem;
+            </script>
+          </head>
+          <body>
+            <h2>🚀 Server started on port: ${port}</h2>
+            <p>✅ Conexão com o banco de dados estabelecida com sucesso.</p>
+            <p>🔄 Redirecionando em <span class="countdown" id="contador">5</span> segundos...</p>
+          </body>
+        </html>
+      `);
     })
     .catch((error) => {
       return res.send(`❌ Error connecting to database: ${error}`);
