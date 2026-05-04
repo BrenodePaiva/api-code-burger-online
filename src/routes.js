@@ -16,6 +16,10 @@ import DataBase from "./database/index.js";
 const routes = new Router();
 const upload = multer(multerConfig);
 
+routes.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Servidor ativo" });
+});
+
 routes.get("/", (req, res) => {
   DataBase.connection
     .authenticate()
