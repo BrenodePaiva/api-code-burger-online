@@ -74,6 +74,8 @@ routes.post("/sessions", SessionController.store);
 
 routes.post("/forgot-password", SessionController.forgotPass);
 
+routes.post("/reset-password/:token", SessionController.resetPass);
+
 routes.get("/auth/google/url", SessionController.googleUrl);
 routes.get("/auth/google/callback", SessionController.googleCallback);
 
