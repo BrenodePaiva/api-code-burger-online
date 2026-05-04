@@ -39,7 +39,7 @@ routes.get("/", (req, res) => {
               }
             </style>
             <script>
-              let segundos = 5;
+              let segundos = 2;
               function atualizarContagem() {
                 document.getElementById("contador").textContent = segundos;
                 if (segundos === 0) {
