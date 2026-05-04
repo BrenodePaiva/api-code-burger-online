@@ -8,7 +8,7 @@ const sendEmail = async (options) => {
   await client
     .send({
       from: {
-        email: "hello@brenopaiva.net.br",
+        email: "no-reply@code-burger.brenofullstack.com",
         name: "CodeBurge Login",
       },
       to: [{ email: options.to }],
