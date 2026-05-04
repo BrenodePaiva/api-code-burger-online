@@ -182,7 +182,7 @@ class SessionController {
     const resetToken = user.createResetPasswordToken();
     await user.save({ validate: false });
 
-    const resetUrl = `${process.env.API_CONSUMER}/resetar-senha/${resetToken}`;
+    const resetUrl = `${process.env.API_CONSUMER}/#/resetar-senha/${resetToken}`;
 
     htmlmail = fs.readFileSync(
       path.join(__dirname, "..", "..", "utils", "mail.html"),
