@@ -13,7 +13,7 @@ class App {
     this.app.use(
       cors({
         origin: process.env.API_CONSUMER,
-        methods: ["GET", "POST", "PATCH", "PUT"],
+        methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true,
       })
