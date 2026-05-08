@@ -92,6 +92,7 @@ routes.get("/orders/:user", OrderController.index);
 routes.use(isAdmin);
 routes.post("/products", upload.single("file"), ProductController.store);
 routes.put("/products/:id", upload.single("file"), ProductController.update);
+routes.delete("/products/:id", ProductController.delete);
 
 routes.post("/categories", upload.single("file"), CategoryController.store);
 routes.put("/categories/:id", upload.single("file"), CategoryController.update);
